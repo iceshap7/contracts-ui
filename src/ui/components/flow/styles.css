@@ -1,0 +1,17 @@
+.c-node {
+  min-width: 200px;
+  max-width: 500px;
+  color: #777;
+  padding: 5px;
+  background: white;
+  border: 1px solid #eee;
+  border-radius: 5px;
+}
+
+.c-node label {
+  font-size: 12px;
+}
+
+.account-select .dropdown__control {
+  min-height: 0;
+}

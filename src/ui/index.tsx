@@ -15,6 +15,7 @@ import {
   SelectCodeHash,
   Settings,
   NotFound,
+  CreateOwnContract,
 } from 'ui/pages';
 
 globalThis.Buffer = Buffer;
@@ -30,6 +31,7 @@ root.render(
     <Routes>
       <Route path="/" element={<App />}>
         <Route index element={<Homepage />} />
+        <Route path="create-own-contract" element={<CreateOwnContract />} />
         <Route path="add-contract" element={<AddContract />} />
         <Route path="hash-lookup" element={<SelectCodeHash />} />
         <Route path="instantiate" element={<Instantiate />}>
