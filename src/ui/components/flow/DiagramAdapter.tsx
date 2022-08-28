@@ -1,4 +1,4 @@
-import { useRef, useCallback, useState } from 'react';
+import { useRef, useCallback, useState, useEffect } from 'react';
 import ReactFlow, {
   addEdge,
   applyNodeChanges,
@@ -24,6 +24,11 @@ const nodeTypes = {
 const DiagramAdapter = ({ nodes, setNodes, edges, setEdges }) => {
   const reactFlowWrapper = useRef<ReactFlowRefType>(null);
   const [reactFlowInstance, setReactFlowInstance] = useState<ReactFlowInstance>();
+
+  useEffect(() => {
+    id = nodes.length;
+  }, [])
+
 
   const onInit = (_reactFlowInstance: ReactFlowInstance) => setReactFlowInstance(_reactFlowInstance);
 
