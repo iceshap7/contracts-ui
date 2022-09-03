@@ -48,6 +48,7 @@
     "dexie": "^3.2.2",
     "dexie-react-hooks": "1.0.7",
     "react": "^18.2.0",
+    "react-datetime-picker": "^3.5.0",
     "react-dom": "^18.2.0",
     "react-dropzone": "^14.2.2",
     "react-flow-renderer": "^10.3.16",
