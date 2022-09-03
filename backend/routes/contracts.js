@@ -9,7 +9,7 @@ const { dirname } = require('path');
 
 router.post('/', async function (req, res) {
   const contract = uuidv4();
-  const source = 'templates/deposit';
+  const source = 'templates/erc20';
   const destination = 'contracts/' + contract;
 
   try {
@@ -23,9 +23,8 @@ router.post('/', async function (req, res) {
       }
 
       const replacedData = data
-        .replace(/:fromAccountId:/gim, req.body.fromAccountId)
         .replace(/:toAccountId:/gim, req.body.toAccountId)
-        .replace(/:amount:/gim, parseFloat(req.body.amount));
+        .replace(/:condition:/gim, parseFloat(req.body.withdrawAt));
 
       fs.writeFile(destFile, replacedData, 'utf-8', function (err, data) {
         if (err) {
@@ -71,8 +70,8 @@ router.get('/:contract', async function (req, res) {
       });
 
       archive.pipe(output);
-      archive.append(fs.createReadStream(source + '/target/ink/deposit.contract'), { name: 'deposit.contract' });
-      archive.append(fs.createReadStream(source + '/target/ink/deposit.wasm'), { name: 'deposit.wasm' });
+      archive.append(fs.createReadStream(source + '/target/ink/erc20.contract'), { name: 'mycontract.contract' });
+      archive.append(fs.createReadStream(source + '/target/ink/erc20.wasm'), { name: 'mycontract.wasm' });
       archive.append(fs.createReadStream(source + '/target/ink/metadata.json'), { name: 'metadata.json' });
       archive.finalize();
     });
