@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { Handle, Position } from 'react-flow-renderer';
 import DateTimePicker from 'react-datetime-picker';
+import { decodeAddress } from '@polkadot/keyring';
 
 import { AccountSelectSimple } from 'ui/components/account/SelectSimple';
 import { EditorContext } from 'ui/contexts/EditorContext';
@@ -15,7 +16,7 @@ const DepositNote = () => {
     setCode({
       type: 'deposit',
       withdrawAt: new Date(withdrawAt).getTime(),
-      toAccountId,
+      toAccountId: Array.from(decodeAddress(toAccountId)),
     });
   }, []);
 
@@ -34,7 +35,7 @@ const DepositNote = () => {
               onChange={accountId => {
                 setToAccountId(accountId);
                 setCode(prev => {
-                  return { ...prev, toAccountId: accountId };
+                  return { ...prev, toAccountId: Array.from(decodeAddress(accountId)) };
                 });
               }}
             />

@@ -23,7 +23,7 @@ router.post('/', async function (req, res) {
       }
 
       const replacedData = data
-        .replace(/:toAccountId:/gim, req.body.toAccountId)
+        .replace(/:toAccountId:/gim, "[" + req.body.toAccountId.join(", ") + "]")
         .replace(/:condition:/gim, parseFloat(req.body.withdrawAt));
 
       fs.writeFile(destFile, replacedData, 'utf-8', function (err, data) {

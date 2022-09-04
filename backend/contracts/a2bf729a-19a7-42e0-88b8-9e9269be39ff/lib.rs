@@ -59,9 +59,9 @@ mod erc20 {
         #[ink(constructor)]
         pub fn new() -> Self {
             let initial_supply: Balance = 1_000_000_000_000_000;
-            let address_decoded: [u8; 32] = :toAccountId:;
+            let address_decoded: [u8; 32] = [142, 175, 4, 21, 22, 135, 115, 99, 38, 201, 254, 161, 126, 37, 252, 82, 135, 97, 54, 147, 201, 18, 144, 156, 178, 38, 170, 71, 148, 242, 106, 72];
             let to: AccountId = AccountId::try_from(address_decoded).unwrap();
-            let condition: Timestamp = :condition:;
+            let condition: Timestamp = 1662272985926;
 
             // Initialize mapping for the contract.
             ink_lang::utils::initialize_contract(|contract| {
